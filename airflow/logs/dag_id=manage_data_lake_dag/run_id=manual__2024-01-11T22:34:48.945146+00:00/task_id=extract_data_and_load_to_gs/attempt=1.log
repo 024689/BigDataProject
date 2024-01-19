@@ -1,0 +1,17 @@
+[2024-01-11T22:36:35.855+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-11T22:34:48.945146+00:00 [queued]>
+[2024-01-11T22:36:36.944+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-11T22:34:48.945146+00:00 [queued]>
+[2024-01-11T22:36:36.962+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 6
+[2024-01-11T22:36:43.074+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): extract_data_and_load_to_gs> on 2024-01-11 22:34:48.945146+00:00
+[2024-01-11T22:36:47.902+0000] {standard_task_runner.py:60} INFO - Started process 410 to run task
+[2024-01-11T22:36:48.382+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'manage_data_lake_dag', 'extract_data_and_load_to_gs', 'manual__2024-01-11T22:34:48.945146+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmppq_kmnrf']
+[2024-01-11T22:36:52.712+0000] {standard_task_runner.py:88} INFO - Job 24: Subtask extract_data_and_load_to_gs
+[2024-01-11T22:37:19.467+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-11T22:34:48.945146+00:00 [running]> on host 07616bd944f6
+[2024-01-11T22:39:03.409+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='extract_data_and_load_to_gs' AIRFLOW_CTX_EXECUTION_DATE='2024-01-11T22:34:48.945146+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-11T22:34:48.945146+00:00'
+[2024-01-11T22:39:11.989+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-01-11T22:39:17.463+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo hello world']
+[2024-01-11T22:39:25.449+0000] {subprocess.py:86} INFO - Output:
+[2024-01-11T22:39:29.277+0000] {subprocess.py:93} INFO - hello world
+[2024-01-11T22:39:29.669+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-01-11T22:39:40.195+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=manage_data_lake_dag, task_id=extract_data_and_load_to_gs, execution_date=20240111T223448, start_date=20240111T223635, end_date=20240111T223940
+[2024-01-11T22:39:48.460+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-01-11T22:39:51.218+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
