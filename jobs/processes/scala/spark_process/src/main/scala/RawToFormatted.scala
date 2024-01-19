@@ -31,8 +31,7 @@ object RawToFormatted {
         .withColumn("competitionCode", col("code"))
         .withColumn("currentSeasonId", col("currentSeason").getItem("id"))
         .withColumn("currentMatchDay", col("currentSeason").getItem("currentMatchDay"))
-    }
-    else {
+    } else {
       throw new RuntimeException("Provide arguments for google cloud bucket path")
     }
 

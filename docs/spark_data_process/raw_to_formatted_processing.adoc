@@ -1,0 +1,155 @@
+
+                I. Connect GCS to spark
+
+    spark.sparkContext.hadoopConfiguration
+        .set("google.cloud.auth.service.account.json.keyfile", "/Users/juniortemgoua/Documents/projects/BigData/airflow/secret/google_storage_secret_key_credentials.json")
+
+    val ROOT_BUCKET_PATH = "gs://data-lake-buck"
+
+                II. Formatted competitions dataframe
+            1. Load competitions data from gcs
+    {
+        var competition_df = spark.read.option("multiline", true)
+                .option("inferSchema", true)
+                .json(s"$ROOT_BUCKET_PATH/raw/football_data/competitions/2024-01-14/*.json")
+    }
+    competition_df.printSchema
+
+#Initial schema of raw competition data
+
+    root
+     |-- area: struct (nullable = true)
+     |    |-- code: string (nullable = true)
+     |    |-- flag: string (nullable = true)
+     |    |-- id: long (nullable = true)
+     |    |-- name: string (nullable = true)
+     |-- code: string (nullable = true)
+     |-- currentSeason: struct (nullable = true)
+     |    |-- currentMatchDay: long (nullable = true)
+     |    |-- endDate: string (nullable = true)
+     |    |-- id: long (nullable = true)
+     |    |-- startDate: string (nullable = true)
+     |    |-- winner: struct (nullable = true)
+     |    |    |-- address: string (nullable = true)
+     |    |    |-- clubColors: string (nullable = true)
+     |    |    |-- crest: string (nullable = true)
+     |    |    |-- founded: long (nullable = true)
+     |    |    |-- id: long (nullable = true)
+     |    |    |-- lastUpdated: string (nullable = true)
+     |    |    |-- name: string (nullable = true)
+     |    |    |-- shortName: string (nullable = true)
+     |    |    |-- tla: string (nullable = true)
+     |    |    |-- venue: string (nullable = true)
+     |    |    |-- website: string (nullable = true)
+     |-- emblem: string (nullable = true)
+     |-- id: long (nullable = true)
+     |-- lastUpdated: string (nullable = true)
+     |-- name: string (nullable = true)
+     |-- seasons: array (nullable = true)
+     |    |-- element: struct (containsNull = true)
+     |    |    |-- currentMatchDay: long (nullable = true)
+     |    |    |-- endDate: string (nullable = true)
+     |    |    |-- id: long (nullable = true)
+     |    |    |-- startDate: string (nullable = true)
+     |    |    |-- winner: struct (nullable = true)
+     |    |    |    |-- address: string (nullable = true)
+     |    |    |    |-- clubColors: string (nullable = true)
+     |    |    |    |-- crest: string (nullable = true)
+     |    |    |    |-- founded: long (nullable = true)
+     |    |    |    |-- id: long (nullable = true)
+     |    |    |    |-- lastUpdated: string (nullable = true)
+     |    |    |    |-- name: string (nullable = true)
+     |    |    |    |-- shortName: string (nullable = true)
+     |    |    |    |-- tla: string (nullable = true)
+     |    |    |    |-- venue: string (nullable = true)
+     |    |    |    |-- website: string (nullable = true)
+     |-- type: string (nullable = true)
+
+
+
+            2. Destructure competition_df
+
+    {
+        competition_df = competition_df
+            .withColumn("areaCode",$"area".getItem("code"))
+            .withColumn("areaFlag",$"area".getItem("flag"))
+            .withColumn("areaId",$"area".getItem("id"))
+            .withColumn("areaName",$"area".getItem("name"))
+            .withColumn("season",explode($"seasons"))
+            .withColumn("competitionId", $"id")
+            .withColumn("competitionCode", $"code")
+            .withColumn("currentSeasonId",$"currentSeason".getItem("id"))
+            .withColumn("currentMatchDay", $"currentSeason".getItem("currentMatchDay"))
+    }
+
+    {
+        competition_df = competition_df
+            .withColumn("seasonId", $"season".getItem("id"))
+            .withColumn("seasonWinnerId", $"season".getItem("winner").getItem("id"))
+    }
+
+                II. Create season dataframe
+            1.Create season from competition_df
+
+    {
+        season_df = season_df.select($"season", $"competitionId", $"competitionCode")
+            .withColumn("id", $"season".getItem("id"))
+            .withColumn("endDate", $"season".getItem("endDate"))
+            .withColumn("startDate", $"season".getItem("startDate"))
+            .withColumn("winnerTeamId", $"season".getItem("winner").getItem("id"))
+            .withColumn("currentMatchDay", $"season".getItem("currentMatchDay"))
+    }
+
+            2. Drop season column in season_df
+    season_df = season_df.drop($"season")
+    season_df.printSchema
+
+#Print formatted schema of season data
+
+    root
+     |-- competitionId: long (nullable = true)
+     |-- competitionCode: string (nullable = true)
+     |-- id: long (nullable = true)
+     |-- endDate: string (nullable = true)
+     |-- startDate: string (nullable = true)
+     |-- winnerId: long (nullable = true)
+     |-- currentMatchDay: long (nullable = true)
+
+            3. Drop unused column
+
+    competition_df = competition_df.drop($"seasons")
+    competition_df = competition_df.drop($"season")
+    competition_df = competition_df.drop($"currentSeason")
+    competition_df = competition_df.drop($"area")
+
+    competition_df.printSchema
+
+#Print formatted schema of competition data
+
+    root
+     |-- code: string (nullable = true)
+     |-- emblem: string (nullable = true)
+     |-- id: long (nullable = true)
+     |-- lastUpdated: string (nullable = true)
+     |-- name: string (nullable = true)
+     |-- type: string (nullable = true)
+     |-- areaCode: string (nullable = true)
+     |-- areaId: long (nullable = true)
+     |-- areaName: string (nullable = true)
+     |-- currentSeasonId: long (nullable = true)
+     |-- currentMatchDay: long (nullable = true)
+     |-- currentSeasonWinnerId: long (nullable = true)
+     |-- seasonId: long (nullable = true)
+     |-- seasonWinnerId: long (nullable = true)
+
+
+4. Drop duplicated competitions
+
+    competition_df = competition_df.dropDuplicates("id")
+
+
+5.Write season and competition on formatted data folder to GCS
+
+    val currentDate = LocalDate.now()
+    competition_df.write.parquet(s"$ROOT_BUCKET_PATH/formatted/football_data/competition/"+ currentDate)
+    season_df.write.parquet(s"$ROOT_BUCKET_PATH/formatted/football_data/season/"+ currentDate)
