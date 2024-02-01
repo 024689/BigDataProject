@@ -1,5 +1,6 @@
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions.{col, count, countDistinct, sum}
+import org.elasticsearch.spark.sql._
 
 import java.time.LocalDate
 
@@ -18,14 +19,15 @@ object FormattedToUsage {
           .set("google.cloud.auth.service.account.json.keyfile", GCS_JSON_key)
     }
 
-    val executionDate = spark.conf.get("spark.airflow.execution_date")
-    println("************************************************")
-    println(s"Date d'exécution  : $executionDate")
-    println("************************************************")
+//    val executionDate = spark.conf.get("spark.airflow.execution_date")
+//    println("************************************************")
+//    println(s"Date d'exécution  : $executionDate")
+//    println("************************************************")
 
 
       val ROOT_BUCKET_PATH = args(0)
-      val currentDate: String = if(executionDate != null) executionDate else LocalDate.now().toString
+//      val currentDate: String = if(executionDate != null) executionDate else LocalDate.now().toString
+      val currentDate: String = "2024-01-14"
       this.combineCompetitions(spark, ROOT_BUCKET_PATH, currentDate)
     } else {
       throw new RuntimeException("Provide arguments for google cloud bucket path")
@@ -74,5 +76,12 @@ object FormattedToUsage {
     competitions_result_df.show()
 
     competitions_result_df.write.mode(SaveMode.Overwrite).parquet(s"$ROOT_BUCKET_PATH/usage/football_data/competitions/" + currentDate)
+
+    competitions_result_df.write
+      .format("org.elasticsearch.spark.sql")
+      .option("es.resource", "competition/comp")
+      .option("es.nodes.wan.only", value = true)
+      .mode(SaveMode.Append)
+      .save()
   }
 }
