@@ -21,4 +21,4 @@ def send_file_to_gs(bucket, json_data, bucket_file_path):
         blob.upload_from_string(json_data_stringify)
         print(f"File was send successfully as {bucket_file_path}")
     except Exception as e:
-        print(f"Some error occurred during cloud Storage connexion: {e}")
+        print(f"Some error occurred during writing for gcs: {e}")

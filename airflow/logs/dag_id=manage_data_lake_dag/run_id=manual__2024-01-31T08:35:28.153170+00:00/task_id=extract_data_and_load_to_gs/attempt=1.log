@@ -1,0 +1,42 @@
+[2024-01-31T08:38:37.124+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-31T08:35:28.153170+00:00 [queued]>
+[2024-01-31T08:38:37.131+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-31T08:35:28.153170+00:00 [queued]>
+[2024-01-31T08:38:37.131+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-01-31T08:38:37.146+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): extract_data_and_load_to_gs> on 2024-01-31 08:35:28.153170+00:00
+[2024-01-31T08:38:37.151+0000] {standard_task_runner.py:60} INFO - Started process 146629 to run task
+[2024-01-31T08:38:37.158+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'extract_data_and_load_to_gs', 'manual__2024-01-31T08:35:28.153170+00:00', '--job-id', '469', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmpq95m80_w']
+[2024-01-31T08:38:37.161+0000] {standard_task_runner.py:88} INFO - Job 469: Subtask extract_data_and_load_to_gs
+[2024-01-31T08:38:37.207+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-31T08:35:28.153170+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-31T08:38:37.285+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='extract_data_and_load_to_gs' AIRFLOW_CTX_EXECUTION_DATE='2024-01-31T08:35:28.153170+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-31T08:35:28.153170+00:00'
+[2024-01-31T08:38:37.529+0000] {logging_mixin.py:188} INFO - Login to bucket data-lake-buck
+[2024-01-31T08:38:37.530+0000] {client.py:192} INFO - Instantiated <InsecureClient(url='http://34.155.106.39:9870')>.
+[2024-01-31T08:38:38.070+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competitions/2024-01-31/BSA.json
+[2024-01-31T08:38:38.070+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competitions/2024-01-31/BSA.json'.
+[2024-01-31T08:38:46.591+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/standings/2024-01-31/BSA.json
+[2024-01-31T08:38:46.591+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/standings/2024-01-31/BSA.json'.
+[2024-01-31T08:38:55.995+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competition_matches/2024-01-31/BSA.json
+[2024-01-31T08:38:56.004+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competition_matches/2024-01-31/BSA.json'.
+[2024-01-31T08:38:56.840+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competitions/2024-01-31/ELC.json
+[2024-01-31T08:38:56.841+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competitions/2024-01-31/ELC.json'.
+[2024-01-31T08:39:05.277+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/standings/2024-01-31/ELC.json
+[2024-01-31T08:39:05.278+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/standings/2024-01-31/ELC.json'.
+[2024-01-31T08:39:14.978+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competition_matches/2024-01-31/ELC.json
+[2024-01-31T08:39:14.991+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competition_matches/2024-01-31/ELC.json'.
+[2024-01-31T08:39:15.553+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competitions/2024-01-31/PL.json
+[2024-01-31T08:39:15.554+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competitions/2024-01-31/PL.json'.
+[2024-01-31T08:39:23.978+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/standings/2024-01-31/PL.json
+[2024-01-31T08:39:23.979+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/standings/2024-01-31/PL.json'.
+[2024-01-31T08:39:33.277+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competition_matches/2024-01-31/PL.json
+[2024-01-31T08:39:33.286+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competition_matches/2024-01-31/PL.json'.
+[2024-01-31T08:39:33.715+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competitions/2024-01-31/CL.json
+[2024-01-31T08:39:33.715+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competitions/2024-01-31/CL.json'.
+[2024-01-31T08:39:42.544+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/standings/2024-01-31/CL.json
+[2024-01-31T08:39:42.545+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/standings/2024-01-31/CL.json'.
+[2024-01-31T08:39:51.778+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competition_matches/2024-01-31/CL.json
+[2024-01-31T08:39:51.781+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competition_matches/2024-01-31/CL.json'.
+[2024-01-31T08:39:52.218+0000] {logging_mixin.py:188} INFO - File was send successfully as datalake/raw/football_data/competitions/2024-01-31/EC.json
+[2024-01-31T08:39:52.218+0000] {client.py:496} INFO - Writing to '/datalake/raw/football_data/competitions/2024-01-31/EC.json'.
+[2024-01-31T08:39:52.789+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-01-31T08:39:52.795+0000] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 146629. PIDs of all processes in the group: [146629]
+[2024-01-31T08:39:52.795+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 146629
+[2024-01-31T08:39:52.795+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-01-31T08:39:52.847+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=146629, status='terminated', exitcode=0, started='08:38:36') (146629) terminated with exit code 0

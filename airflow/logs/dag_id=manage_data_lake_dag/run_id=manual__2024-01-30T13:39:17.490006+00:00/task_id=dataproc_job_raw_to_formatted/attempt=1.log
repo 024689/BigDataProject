@@ -1,0 +1,46 @@
+[2024-01-30T13:39:22.557+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-30T13:39:17.490006+00:00 [queued]>
+[2024-01-30T13:39:22.565+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-30T13:39:17.490006+00:00 [queued]>
+[2024-01-30T13:39:22.565+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-01-30T13:39:22.581+0000] {taskinstance.py:2191} INFO - Executing <Task(DataprocSubmitJobOperator): dataproc_job_raw_to_formatted> on 2024-01-30 13:39:17.490006+00:00
+[2024-01-30T13:39:22.587+0000] {standard_task_runner.py:60} INFO - Started process 38601 to run task
+[2024-01-30T13:39:22.594+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'dataproc_job_raw_to_formatted', 'manual__2024-01-30T13:39:17.490006+00:00', '--job-id', '223', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmpxqlz_ytf']
+[2024-01-30T13:39:22.597+0000] {standard_task_runner.py:88} INFO - Job 223: Subtask dataproc_job_raw_to_formatted
+[2024-01-30T13:39:22.652+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-30T13:39:17.490006+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T13:39:22.736+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='dataproc_job_raw_to_formatted' AIRFLOW_CTX_EXECUTION_DATE='2024-01-30T13:39:17.490006+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-30T13:39:17.490006+00:00'
+[2024-01-30T13:39:22.740+0000] {dataproc.py:2317} INFO - Submitting job
+[2024-01-30T13:39:22.746+0000] {connection.py:234} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-30T13:39:22.753+0000] {base.py:83} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-30T13:39:22.829+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/proto/message.py", line 581, in __init__
+    pb_value = marshal.to_proto(pb_type, value)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/proto/marshal/marshal.py", line 228, in to_proto
+    pb_value = self.get_rule(proto_type=proto_type).to_proto(value)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/proto/marshal/rules/message.py", line 36, in to_proto
+    return self._descriptor(**value)
+ValueError: Protocol message JobPlacement has no "clusterName" field.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/operators/dataproc.py", line 2319, in execute
+    job_object = self.hook.submit_job(
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 482, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/dataproc.py", line 807, in submit_job
+    return client.submit_job(
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/google/cloud/dataproc_v1/services/job_controller/client.py", line 521, in submit_job
+    request = jobs.SubmitJobRequest(request)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/proto/message.py", line 609, in __init__
+    pb_value = marshal.to_proto(pb_type, value)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/proto/marshal/marshal.py", line 228, in to_proto
+    pb_value = self.get_rule(proto_type=proto_type).to_proto(value)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/proto/marshal/rules/message.py", line 36, in to_proto
+    return self._descriptor(**value)
+ValueError: Protocol message JobPlacement has no "clusterName" field.
+[2024-01-30T13:39:22.838+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=manage_data_lake_dag, task_id=dataproc_job_raw_to_formatted, execution_date=20240130T133917, start_date=20240130T133922, end_date=20240130T133922
+[2024-01-30T13:39:22.851+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 223 for task dataproc_job_raw_to_formatted (Protocol message JobPlacement has no "clusterName" field.; 38601)
+[2024-01-30T13:39:22.885+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-01-30T13:39:22.908+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

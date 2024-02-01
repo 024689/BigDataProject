@@ -1,0 +1,102 @@
+[2024-01-30T03:02:44.096+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.local_job_raw_to_formatted scheduled__2024-01-21T00:00:00+00:00 [queued]>
+[2024-01-30T03:02:44.104+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.local_job_raw_to_formatted scheduled__2024-01-21T00:00:00+00:00 [queued]>
+[2024-01-30T03:02:44.104+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 6
+[2024-01-30T03:02:44.141+0000] {taskinstance.py:2191} INFO - Executing <Task(SparkSubmitOperator): local_job_raw_to_formatted> on 2024-01-21 00:00:00+00:00
+[2024-01-30T03:02:44.152+0000] {standard_task_runner.py:60} INFO - Started process 22893 to run task
+[2024-01-30T03:02:44.175+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'local_job_raw_to_formatted', 'scheduled__2024-01-21T00:00:00+00:00', '--job-id', '207', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmperwuhn_y']
+[2024-01-30T03:02:44.178+0000] {standard_task_runner.py:88} INFO - Job 207: Subtask local_job_raw_to_formatted
+[2024-01-30T03:02:44.282+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.local_job_raw_to_formatted scheduled__2024-01-21T00:00:00+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T03:02:44.442+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='local_job_raw_to_formatted' AIRFLOW_CTX_EXECUTION_DATE='2024-01-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-21T00:00:00+00:00'
+[2024-01-30T03:02:44.462+0000] {base.py:83} INFO - Using connection ID 'spark_default' for task execution.
+[2024-01-30T03:02:44.466+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master local[*] --conf spark.airflow.execution_date=2024-01-21 --name arrow-spark --class RawToFormatted --queue root.default --deploy-mode client /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar hdfs://localhost:9000/data-lake
+[2024-01-30T03:02:48.641+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO SparkContext: Running Spark version 3.5.0
+[2024-01-30T03:02:48.644+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO SparkContext: OS info Linux, 5.15.0-1049-gcp, amd64
+[2024-01-30T03:02:48.645+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO SparkContext: Java version 17.0.9
+[2024-01-30T03:02:48.759+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2024-01-30T03:02:48.934+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO ResourceUtils: ==============================================================
+[2024-01-30T03:02:48.935+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2024-01-30T03:02:48.935+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO ResourceUtils: ==============================================================
+[2024-01-30T03:02:48.936+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO SparkContext: Submitted application: RawToFormatted
+[2024-01-30T03:02:48.975+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2024-01-30T03:02:48.987+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO ResourceProfile: Limiting resource is cpu
+[2024-01-30T03:02:48.988+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:48 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2024-01-30T03:02:49.053+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SecurityManager: Changing view acls to: juniortemgoua0
+[2024-01-30T03:02:49.054+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SecurityManager: Changing modify acls to: juniortemgoua0
+[2024-01-30T03:02:49.055+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SecurityManager: Changing view acls groups to:
+[2024-01-30T03:02:49.056+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SecurityManager: Changing modify acls groups to:
+[2024-01-30T03:02:49.057+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: juniortemgoua0; groups with view permissions: EMPTY; users with modify permissions: juniortemgoua0; groups with modify permissions: EMPTY
+[2024-01-30T03:02:49.468+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO Utils: Successfully started service 'sparkDriver' on port 38947.
+[2024-01-30T03:02:49.502+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SparkEnv: Registering MapOutputTracker
+[2024-01-30T03:02:49.553+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SparkEnv: Registering BlockManagerMaster
+[2024-01-30T03:02:49.579+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2024-01-30T03:02:49.580+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2024-01-30T03:02:49.587+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2024-01-30T03:02:49.616+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-b3a404ca-4a03-4f93-a4d6-a607176aa59e
+[2024-01-30T03:02:49.646+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2024-01-30T03:02:49.677+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO SparkEnv: Registering OutputCommitCoordinator
+[2024-01-30T03:02:49.890+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2024-01-30T03:02:49.977+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:49 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2024-01-30T03:02:50.050+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO SparkContext: Added JAR file:/home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar at spark://instance-1.europe-west9-a.c.data-lake-project-409321.internal:38947/jars/spark_job_2.12-0.1.0.jar with timestamp 1706583768615
+[2024-01-30T03:02:50.165+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: Starting executor ID driver on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T03:02:50.166+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: OS info Linux, 5.15.0-1049-gcp, amd64
+[2024-01-30T03:02:50.167+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: Java version 17.0.9
+[2024-01-30T03:02:50.181+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2024-01-30T03:02:50.183+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@6ed043d3 for default.
+[2024-01-30T03:02:50.228+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: Fetching spark://instance-1.europe-west9-a.c.data-lake-project-409321.internal:38947/jars/spark_job_2.12-0.1.0.jar with timestamp 1706583768615
+[2024-01-30T03:02:50.332+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO TransportClientFactory: Successfully created connection to instance-1.europe-west9-a.c.data-lake-project-409321.internal/10.200.0.5:38947 after 50 ms (0 ms spent in bootstraps)
+[2024-01-30T03:02:50.356+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Utils: Fetching spark://instance-1.europe-west9-a.c.data-lake-project-409321.internal:38947/jars/spark_job_2.12-0.1.0.jar to /tmp/spark-0c0b23dc-13ac-460e-aa51-a7ba8a7f4f2c/userFiles-c02b7b7d-a706-400f-a6d3-d0a755c50cc7/fetchFileTemp18187336536681071299.tmp
+[2024-01-30T03:02:50.404+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Executor: Adding file:/tmp/spark-0c0b23dc-13ac-460e-aa51-a7ba8a7f4f2c/userFiles-c02b7b7d-a706-400f-a6d3-d0a755c50cc7/spark_job_2.12-0.1.0.jar to class loader default
+[2024-01-30T03:02:50.416+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41877.
+[2024-01-30T03:02:50.417+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO NettyBlockTransferService: Server created on instance-1.europe-west9-a.c.data-lake-project-409321.internal:41877
+[2024-01-30T03:02:50.419+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2024-01-30T03:02:50.429+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, instance-1.europe-west9-a.c.data-lake-project-409321.internal, 41877, None)
+[2024-01-30T03:02:50.433+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO BlockManagerMasterEndpoint: Registering block manager instance-1.europe-west9-a.c.data-lake-project-409321.internal:41877 with 434.4 MiB RAM, BlockManagerId(driver, instance-1.europe-west9-a.c.data-lake-project-409321.internal, 41877, None)
+[2024-01-30T03:02:50.436+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, instance-1.europe-west9-a.c.data-lake-project-409321.internal, 41877, None)
+[2024-01-30T03:02:50.438+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:50 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, instance-1.europe-west9-a.c.data-lake-project-409321.internal, 41877, None)
+[2024-01-30T03:02:51.551+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:51 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2024-01-30T03:02:51.565+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:51 INFO SharedState: Warehouse path is 'file:/home/juniortemgoua0/DataLake/spark-warehouse'.
+[2024-01-30T03:02:52.856+0000] {spark_submit.py:571} INFO - ************************************************
+[2024-01-30T03:02:52.857+0000] {spark_submit.py:571} INFO - Date d'exécution  : 2024-01-21
+[2024-01-30T03:02:52.857+0000] {spark_submit.py:571} INFO - ************************************************
+[2024-01-30T03:02:54.482+0000] {spark_submit.py:571} INFO - Exception in thread "main" org.apache.spark.sql.AnalysisException: [PATH_NOT_FOUND] Path does not exist: hdfs://localhost:9000/data-lake/raw/football_data/competitions/2024-01-21/*.json.
+[2024-01-30T03:02:54.482+0000] {spark_submit.py:571} INFO - at org.apache.spark.sql.errors.QueryCompilationErrors$.dataPathNotExistError(QueryCompilationErrors.scala:1500)
+[2024-01-30T03:02:54.482+0000] {spark_submit.py:571} INFO - at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$checkAndGlobPathIfNecessary$3(DataSource.scala:743)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at org.apache.spark.util.ThreadUtils$.$anonfun$parmap$2(ThreadUtils.scala:380)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at scala.util.Success.$anonfun$map$1(Try.scala:255)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at scala.util.Success.map(Try.scala:213)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+[2024-01-30T03:02:54.483+0000] {spark_submit.py:571} INFO - at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2024-01-30T03:02:54.484+0000] {spark_submit.py:571} INFO - at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2024-01-30T03:02:54.484+0000] {spark_submit.py:571} INFO - at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1395)
+[2024-01-30T03:02:54.484+0000] {spark_submit.py:571} INFO - at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+[2024-01-30T03:02:54.484+0000] {spark_submit.py:571} INFO - at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+[2024-01-30T03:02:54.484+0000] {spark_submit.py:571} INFO - at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+[2024-01-30T03:02:54.484+0000] {spark_submit.py:571} INFO - at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+[2024-01-30T03:02:54.485+0000] {spark_submit.py:571} INFO - at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[2024-01-30T03:02:54.491+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO SparkContext: Invoking stop() from shutdown hook
+[2024-01-30T03:02:54.492+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2024-01-30T03:02:54.519+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO SparkUI: Stopped Spark web UI at http://instance-1.europe-west9-a.c.data-lake-project-409321.internal:4040
+[2024-01-30T03:02:54.543+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2024-01-30T03:02:54.584+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO MemoryStore: MemoryStore cleared
+[2024-01-30T03:02:54.585+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO BlockManager: BlockManager stopped
+[2024-01-30T03:02:54.606+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2024-01-30T03:02:54.611+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2024-01-30T03:02:54.652+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO SparkContext: Successfully stopped SparkContext
+[2024-01-30T03:02:54.652+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO ShutdownHookManager: Shutdown hook called
+[2024-01-30T03:02:54.654+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO ShutdownHookManager: Deleting directory /tmp/spark-6e15604b-7021-401f-9085-d33ad433d419
+[2024-01-30T03:02:54.658+0000] {spark_submit.py:571} INFO - 24/01/30 03:02:54 INFO ShutdownHookManager: Deleting directory /tmp/spark-0c0b23dc-13ac-460e-aa51-a7ba8a7f4f2c
+[2024-01-30T03:02:54.726+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self._application)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master local[*] --conf spark.airflow.execution_date=2024-01-21 --name arrow-spark --class RawToFormatted --queue root.default --deploy-mode client /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar hdfs://localhost:9000/data-lake. Error code is: 1.
+[2024-01-30T03:02:54.729+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=manage_data_lake_dag, task_id=local_job_raw_to_formatted, execution_date=20240121T000000, start_date=20240130T030244, end_date=20240130T030254
+[2024-01-30T03:02:54.743+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 207 for task local_job_raw_to_formatted (Cannot execute: spark-submit --master local[*] --conf spark.airflow.execution_date=2024-01-21 --name arrow-spark --class RawToFormatted --queue root.default --deploy-mode client /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar hdfs://localhost:9000/data-lake. Error code is: 1.; 22893)
+[2024-01-30T03:02:54.767+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-01-30T03:02:54.786+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

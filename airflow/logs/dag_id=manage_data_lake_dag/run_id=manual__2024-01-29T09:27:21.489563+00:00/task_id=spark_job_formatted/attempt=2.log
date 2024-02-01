@@ -1,0 +1,2 @@
+[2024-01-29T09:30:22.361+0000] {taskinstance.py:1946} INFO - Dependencies not met for <TaskInstance: manage_data_lake_dag.spark_job_formatted manual__2024-01-29T09:27:21.489563+00:00 [up_for_retry]>, dependency 'Not In Retry Period' FAILED: Task is not ready for retry yet but will be retried automatically. Current date is 2024-01-29T09:30:22.361529+00:00 and task will be retried at 2024-01-29T09:35:15.660377+00:00.
+[2024-01-29T09:30:22.362+0000] {local_task_job_runner.py:160} INFO - Task is not able to be run

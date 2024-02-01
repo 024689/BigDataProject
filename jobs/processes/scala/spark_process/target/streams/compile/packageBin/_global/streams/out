@@ -1,15 +1,15 @@
-[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	UsageToElasticSearch.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/UsageToElasticSearch.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	RawToFormatted$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/RawToFormatted$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	RawToFormatted.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/RawToFormatted.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FormattedToUsage$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/FormattedToUsage$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	UsageToElasticSearch$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/UsageToElasticSearch$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/UsageToElasticSearch$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	UsageToElasticSearch.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/UsageToElasticSearch.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	FormattedToUsage.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/FormattedToUsage.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/FormattedToUsage.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RawToFormatted.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/RawToFormatted.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FormattedToUsage$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/FormattedToUsage$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RawToFormatted$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes/RawToFormatted$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

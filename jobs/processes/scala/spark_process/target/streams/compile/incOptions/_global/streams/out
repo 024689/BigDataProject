@@ -1,7 +1,7 @@
-[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes.bak[0m
 [0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes.bak[0m
 [0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
@@ -11,4 +11,4 @@
 [0m[[0m[0mdebug[0m] [0m[0m	UsageToElasticSearch$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	RawToFormatted.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	FormattedToUsage.class[0m
-[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/juniortemgoua/Documents/projects/BigData/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/classes.bak[0m

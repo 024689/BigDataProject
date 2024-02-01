@@ -1,0 +1,4 @@
+[0m[[0m[0mdebug[0m] [0m[0m[spark_process-build] Classpath dependencies List()[0m
+[0m[[0m[0mdebug[0m] [0m[0m[spark_process-build] Dependencies from configurations List()[0m
+[0m[[0m[0mdebug[0m] [0m[0mBloop wrote the configuration of project 'spark_process-build' to '/home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/project/.bloop/spark_process-build.json'[0m
+[0m[[0m[32msuccess[0m] [0m[0mGenerated .bloop/spark_process-build.json[0m

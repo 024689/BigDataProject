@@ -1,0 +1,37 @@
+[2024-01-30T13:07:20.684+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-30T12:57:06.997957+00:00 [queued]>
+[2024-01-30T13:07:20.691+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-30T12:57:06.997957+00:00 [queued]>
+[2024-01-30T13:07:20.691+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 6
+[2024-01-30T13:07:20.707+0000] {taskinstance.py:2191} INFO - Executing <Task(DataprocSubmitJobOperator): dataproc_job_raw_to_formatted> on 2024-01-30 12:57:06.997957+00:00
+[2024-01-30T13:07:20.713+0000] {standard_task_runner.py:60} INFO - Started process 32949 to run task
+[2024-01-30T13:07:20.723+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'dataproc_job_raw_to_formatted', 'manual__2024-01-30T12:57:06.997957+00:00', '--job-id', '216', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmp5wv7aunx']
+[2024-01-30T13:07:20.728+0000] {standard_task_runner.py:88} INFO - Job 216: Subtask dataproc_job_raw_to_formatted
+[2024-01-30T13:07:20.789+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-30T12:57:06.997957+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T13:07:20.861+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='dataproc_job_raw_to_formatted' AIRFLOW_CTX_EXECUTION_DATE='2024-01-30T12:57:06.997957+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-30T12:57:06.997957+00:00'
+[2024-01-30T13:07:20.865+0000] {dataproc.py:2317} INFO - Submitting job
+[2024-01-30T13:07:20.870+0000] {connection.py:234} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-30T13:07:20.878+0000] {base.py:83} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-30T13:07:20.885+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/operators/dataproc.py", line 2319, in execute
+    job_object = self.hook.submit_job(
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 482, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/dataproc.py", line 806, in submit_job
+    client = self.get_job_client(region=region)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/dataproc.py", line 241, in get_job_client
+    credentials=self.get_credentials(), client_info=CLIENT_INFO, client_options=client_options
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 303, in get_credentials
+    credentials, _ = self.get_credentials_and_project_id()
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 280, in get_credentials_and_project_id
+    credentials, project_id = get_credentials_and_project_id(
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 362, in get_credentials_and_project_id
+    return _CredentialProvider(*args, **kwargs).get_credentials_and_project()
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 213, in __init__
+    raise AirflowException(
+airflow.exceptions.AirflowException: The `keyfile_dict`, `key_path`, and `key_secret_name` fields are all mutually exclusive. Please provide only one value.
+[2024-01-30T13:07:20.891+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=manage_data_lake_dag, task_id=dataproc_job_raw_to_formatted, execution_date=20240130T125706, start_date=20240130T130720, end_date=20240130T130720
+[2024-01-30T13:07:20.905+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 216 for task dataproc_job_raw_to_formatted (The `keyfile_dict`, `key_path`, and `key_secret_name` fields are all mutually exclusive. Please provide only one value.; 32949)
+[2024-01-30T13:07:20.935+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-01-30T13:07:20.950+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

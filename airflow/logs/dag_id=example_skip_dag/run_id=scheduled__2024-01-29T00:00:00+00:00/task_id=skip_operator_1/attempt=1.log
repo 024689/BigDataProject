@@ -1,0 +1,12 @@
+[2024-01-30T12:56:26.454+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2024-01-29T00:00:00+00:00 [queued]>
+[2024-01-30T12:56:26.461+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_skip_dag.skip_operator_1 scheduled__2024-01-29T00:00:00+00:00 [queued]>
+[2024-01-30T12:56:26.462+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-01-30T12:56:26.480+0000] {taskinstance.py:2191} INFO - Executing <Task(EmptySkipOperator): skip_operator_1> on 2024-01-29 00:00:00+00:00
+[2024-01-30T12:56:26.485+0000] {standard_task_runner.py:60} INFO - Started process 31137 to run task
+[2024-01-30T12:56:26.491+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'example_skip_dag', 'skip_operator_1', 'scheduled__2024-01-29T00:00:00+00:00', '--job-id', '210', '--raw', '--subdir', '/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/example_dags/example_skip_dag.py', '--cfg-path', '/tmp/tmpai6ctafn']
+[2024-01-30T12:56:26.493+0000] {standard_task_runner.py:88} INFO - Job 210: Subtask skip_operator_1
+[2024-01-30T12:56:26.729+0000] {task_command.py:423} INFO - Running <TaskInstance: example_skip_dag.skip_operator_1 scheduled__2024-01-29T00:00:00+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T12:56:26.784+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='example_skip_dag' AIRFLOW_CTX_TASK_ID='skip_operator_1' AIRFLOW_CTX_EXECUTION_DATE='2024-01-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-29T00:00:00+00:00'
+[2024-01-30T12:56:26.790+0000] {taskinstance.py:1138} INFO - Marking task as SKIPPED. dag_id=example_skip_dag, task_id=skip_operator_1, execution_date=20240129T000000, start_date=20240130T125626, end_date=20240130T125626
+[2024-01-30T12:56:26.823+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-01-30T12:56:26.979+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

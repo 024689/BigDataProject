@@ -1,17 +1,16 @@
 
                 I. Connect GCS to spark
 
+{    
     spark.sparkContext.hadoopConfiguration
-        .set("google.cloud.auth.service.account.json.keyfile", "/Users/juniortemgoua/Documents/projects/BigData/airflow/secret/google_storage_secret_key_credentials.json")
-
+        .set("google.cloud.auth.service.account.json.keyfile", "/Users/juniortemgoua/Documents/projects/BigData/DataLake/utils/credentials/google_storage_secret_key_credentials.json")
+}
     val ROOT_BUCKET_PATH = "gs://data-lake-buck"
 
                 II. Formatted competitions dataframe
             1. Load competitions data from gcs
     {
-        var competition_df = spark.read.option("multiline", true)
-                .option("inferSchema", true)
-                .json(s"$ROOT_BUCKET_PATH/raw/football_data/competitions/2024-01-14/*.json")
+        var competition_df = spark.read.option("multiline", true).option("inferSchema", true).json(s"$ROOT_BUCKET_PATH/raw/football_data/competition_matches/2024-01-14")
     }
     competition_df.printSchema
 

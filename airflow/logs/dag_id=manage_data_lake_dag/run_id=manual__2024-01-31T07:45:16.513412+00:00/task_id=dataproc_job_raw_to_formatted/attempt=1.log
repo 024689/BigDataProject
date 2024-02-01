@@ -1,0 +1,18 @@
+[2024-01-31T07:49:59.138+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-31T07:45:16.513412+00:00 [queued]>
+[2024-01-31T07:49:59.145+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-31T07:45:16.513412+00:00 [queued]>
+[2024-01-31T07:49:59.146+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-01-31T07:49:59.162+0000] {taskinstance.py:2191} INFO - Executing <Task(DataprocSubmitJobOperator): dataproc_job_raw_to_formatted> on 2024-01-31 07:45:16.513412+00:00
+[2024-01-31T07:49:59.167+0000] {standard_task_runner.py:60} INFO - Started process 136825 to run task
+[2024-01-31T07:49:59.174+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'dataproc_job_raw_to_formatted', 'manual__2024-01-31T07:45:16.513412+00:00', '--job-id', '452', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmpgdli32jb']
+[2024-01-31T07:49:59.177+0000] {standard_task_runner.py:88} INFO - Job 452: Subtask dataproc_job_raw_to_formatted
+[2024-01-31T07:49:59.225+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted manual__2024-01-31T07:45:16.513412+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-31T07:49:59.300+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='dataproc_job_raw_to_formatted' AIRFLOW_CTX_EXECUTION_DATE='2024-01-31T07:45:16.513412+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-31T07:45:16.513412+00:00'
+[2024-01-31T07:49:59.302+0000] {dataproc.py:2317} INFO - Submitting job
+[2024-01-31T07:49:59.307+0000] {connection.py:234} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-31T07:49:59.312+0000] {base.py:83} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-31T07:49:59.503+0000] {dataproc.py:2329} INFO - Job 411a721a-d761-4f47-93fd-0bab21eaafc7 submitted successfully.
+[2024-01-31T07:49:59.515+0000] {dataproc.py:2363} INFO - Waiting for job 411a721a-d761-4f47-93fd-0bab21eaafc7 to complete
+[2024-01-31T07:52:20.788+0000] {dataproc.py:2367} INFO - Job 411a721a-d761-4f47-93fd-0bab21eaafc7 completed successfully.
+[2024-01-31T07:52:20.815+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=manage_data_lake_dag, task_id=dataproc_job_raw_to_formatted, execution_date=20240131T074516, start_date=20240131T074959, end_date=20240131T075220
+[2024-01-31T07:52:20.865+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-01-31T07:52:20.951+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,19 @@
+[2024-01-30T12:47:52.900+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-30T12:43:46.898942+00:00 [queued]>
+[2024-01-30T12:47:52.907+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-30T12:43:46.898942+00:00 [queued]>
+[2024-01-30T12:47:52.907+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-01-30T12:47:52.922+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): extract_data_and_load_to_gs> on 2024-01-30 12:43:46.898942+00:00
+[2024-01-30T12:47:52.927+0000] {standard_task_runner.py:60} INFO - Started process 29733 to run task
+[2024-01-30T12:47:52.934+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'extract_data_and_load_to_gs', 'manual__2024-01-30T12:43:46.898942+00:00', '--job-id', '202', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmp86zwykji']
+[2024-01-30T12:47:52.937+0000] {standard_task_runner.py:88} INFO - Job 202: Subtask extract_data_and_load_to_gs
+[2024-01-30T12:47:52.996+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.extract_data_and_load_to_gs manual__2024-01-30T12:43:46.898942+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T12:47:53.092+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='extract_data_and_load_to_gs' AIRFLOW_CTX_EXECUTION_DATE='2024-01-30T12:43:46.898942+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-30T12:43:46.898942+00:00'
+[2024-01-30T12:47:53.379+0000] {logging_mixin.py:188} INFO - Login to bucket data-lake-buck
+[2024-01-30T12:47:54.004+0000] {logging_mixin.py:188} INFO - File was send successfully as /data-lake/raw/football_data/competitions/2024-01-30/BSA.json
+[2024-01-30T12:48:02.427+0000] {logging_mixin.py:188} INFO - File was send successfully as /data-lake/raw/football_data/standings/2024-01-30/BSA.json
+[2024-01-30T12:48:12.061+0000] {logging_mixin.py:188} INFO - File was send successfully as /data-lake/raw/football_data/competition_matches/2024-01-30/BSA.json
+[2024-01-30T12:48:12.433+0000] {logging_mixin.py:188} INFO - File was send successfully as /data-lake/raw/football_data/competitions/2024-01-30/ELC.json
+[2024-01-30T12:48:18.142+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-01-30T12:48:18.147+0000] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 29733. PIDs of all processes in the group: [29733]
+[2024-01-30T12:48:18.147+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 29733
+[2024-01-30T12:48:18.148+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-01-30T12:48:18.200+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=29733, status='terminated', exitcode=0, started='12:47:52') (29733) terminated with exit code 0

@@ -14,7 +14,7 @@ object UsageToElasticSearch {
         "es.nodes" -> esNodeHost,
         "es.port" -> "9200",
         "es.resource" -> esResource,
-        "es.nodes.client.only" -> true
+        "es.nodes.client.only" -> true,
       )
 
       val spark = SparkSession.builder
@@ -31,6 +31,5 @@ object UsageToElasticSearch {
       print(f"**** DATA SUCCESSFULLY SAVED IN ELASTIC_SEARCH ****")
       spark.stop()
     }
-
   }
 }

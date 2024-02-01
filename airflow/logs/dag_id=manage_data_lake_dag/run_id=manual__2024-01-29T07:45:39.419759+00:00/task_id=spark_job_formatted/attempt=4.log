@@ -1,0 +1,35 @@
+[2024-01-29T08:01:02.538+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.spark_job_formatted manual__2024-01-29T07:45:39.419759+00:00 [queued]>
+[2024-01-29T08:01:02.546+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.spark_job_formatted manual__2024-01-29T07:45:39.419759+00:00 [queued]>
+[2024-01-29T08:01:02.546+0000] {taskinstance.py:2170} INFO - Starting attempt 4 of 6
+[2024-01-29T08:01:02.640+0000] {taskinstance.py:2191} INFO - Executing <Task(SparkSubmitOperator): spark_job_formatted> on 2024-01-29 07:45:39.419759+00:00
+[2024-01-29T08:01:02.645+0000] {standard_task_runner.py:60} INFO - Started process 58999 to run task
+[2024-01-29T08:01:02.653+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'spark_job_formatted', 'manual__2024-01-29T07:45:39.419759+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmpovfcqp3w']
+[2024-01-29T08:01:02.657+0000] {standard_task_runner.py:88} INFO - Job 36: Subtask spark_job_formatted
+[2024-01-29T08:01:02.704+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.spark_job_formatted manual__2024-01-29T07:45:39.419759+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-29T08:01:02.759+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='spark_job_formatted' AIRFLOW_CTX_EXECUTION_DATE='2024-01-29T07:45:39.419759+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-01-29T07:45:39.419759+00:00'
+[2024-01-29T08:01:02.767+0000] {base.py:83} INFO - Using connection ID 'spark_default' for task execution.
+[2024-01-29T08:01:02.769+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master yarn --name arrow-spark --class RawToFormatted --queue root.default /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar gs://data-lake-buck
+[2024-01-29T08:01:04.836+0000] {spark_submit.py:571} INFO - Exception in thread "main" org.apache.spark.SparkException: When running with master 'yarn' either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.
+[2024-01-29T08:01:04.837+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.error(SparkSubmitArguments.scala:650)
+[2024-01-29T08:01:04.837+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateSubmitArguments(SparkSubmitArguments.scala:281)
+[2024-01-29T08:01:04.837+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateArguments(SparkSubmitArguments.scala:237)
+[2024-01-29T08:01:04.838+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.<init>(SparkSubmitArguments.scala:122)
+[2024-01-29T08:01:04.838+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2$$anon$3.<init>(SparkSubmit.scala:1103)
+[2024-01-29T08:01:04.838+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.parseArguments(SparkSubmit.scala:1103)
+[2024-01-29T08:01:04.838+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+[2024-01-29T08:01:04.839+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+[2024-01-29T08:01:04.839+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+[2024-01-29T08:01:04.839+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2024-01-29T08:01:04.868+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self._application)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --name arrow-spark --class RawToFormatted --queue root.default /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar gs://data-lake-buck. Error code is: 1.
+[2024-01-29T08:01:04.871+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=manage_data_lake_dag, task_id=spark_job_formatted, execution_date=20240129T074539, start_date=20240129T080102, end_date=20240129T080104
+[2024-01-29T08:01:04.882+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 36 for task spark_job_formatted (Cannot execute: spark-submit --master yarn --name arrow-spark --class RawToFormatted --queue root.default /home/juniortemgoua0/DataLake/jobs/processes/scala/spark_process/target/scala-2.12/spark_job_2.12-0.1.0.jar gs://data-lake-buck. Error code is: 1.; 58999)
+[2024-01-29T08:01:04.916+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-01-29T08:01:04.930+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

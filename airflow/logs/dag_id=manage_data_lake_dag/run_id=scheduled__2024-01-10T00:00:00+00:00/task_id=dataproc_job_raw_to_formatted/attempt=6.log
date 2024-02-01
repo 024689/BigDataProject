@@ -1,0 +1,145 @@
+[2024-01-30T18:20:26.254+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted scheduled__2024-01-10T00:00:00+00:00 [queued]>
+[2024-01-30T18:20:26.261+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted scheduled__2024-01-10T00:00:00+00:00 [queued]>
+[2024-01-30T18:20:26.261+0000] {taskinstance.py:2170} INFO - Starting attempt 6 of 6
+[2024-01-30T18:20:26.278+0000] {taskinstance.py:2191} INFO - Executing <Task(DataprocSubmitJobOperator): dataproc_job_raw_to_formatted> on 2024-01-10 00:00:00+00:00
+[2024-01-30T18:20:26.284+0000] {standard_task_runner.py:60} INFO - Started process 73470 to run task
+[2024-01-30T18:20:26.291+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'manage_data_lake_dag', 'dataproc_job_raw_to_formatted', 'scheduled__2024-01-10T00:00:00+00:00', '--job-id', '353', '--raw', '--subdir', 'DAGS_FOLDER/data_lake_dag.py', '--cfg-path', '/tmp/tmpdr7gfjxh']
+[2024-01-30T18:20:26.294+0000] {standard_task_runner.py:88} INFO - Job 353: Subtask dataproc_job_raw_to_formatted
+[2024-01-30T18:20:26.347+0000] {task_command.py:423} INFO - Running <TaskInstance: manage_data_lake_dag.dataproc_job_raw_to_formatted scheduled__2024-01-10T00:00:00+00:00 [running]> on host instance-1.europe-west9-a.c.data-lake-project-409321.internal
+[2024-01-30T18:20:26.419+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='juniortemgoua0' AIRFLOW_CTX_DAG_ID='manage_data_lake_dag' AIRFLOW_CTX_TASK_ID='dataproc_job_raw_to_formatted' AIRFLOW_CTX_EXECUTION_DATE='2024-01-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-10T00:00:00+00:00'
+[2024-01-30T18:20:26.421+0000] {dataproc.py:2317} INFO - Submitting job
+[2024-01-30T18:20:26.427+0000] {connection.py:234} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-30T18:20:26.432+0000] {base.py:83} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-30T18:20:26.611+0000] {dataproc.py:2329} INFO - Job c0124ac0-e95f-437c-83a1-c4f5366eb637 submitted successfully.
+[2024-01-30T18:20:26.624+0000] {dataproc.py:2363} INFO - Waiting for job c0124ac0-e95f-437c-83a1-c4f5366eb637 to complete
+[2024-01-30T18:21:06.942+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/operators/dataproc.py", line 2364, in execute
+    self.hook.wait_for_job(
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 482, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/juniortemgoua0/DataLake/venv/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/dataproc.py", line 740, in wait_for_job
+    raise AirflowException(f"Job failed:\n{job}")
+airflow.exceptions.AirflowException: Job failed:
+reference {
+  project_id: "data-lake-project-409321"
+  job_id: "c0124ac0-e95f-437c-83a1-c4f5366eb637"
+}
+placement {
+  cluster_name: "cluster-f499"
+  cluster_uuid: "13fc8c1e-24fd-4462-8a44-4c3a49636ea2"
+}
+spark_job {
+  main_class: "RawToFormatted"
+  args: "gs://data-lake-buck"
+  args: "dataproc"
+  jar_file_uris: "gs://data-lake-buck/spark_job_2.12-0.1.0.jar"
+  properties {
+    key: "spark.airflow.execution_date"
+    value: "2024-01-10"
+  }
+}
+status {
+  state: ERROR
+  details: "Job failed with message [io.netty.channel.StacklessClosedChannelException: null]. Additional details can be found at:\nhttps://console.cloud.google.com/dataproc/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637?project=data-lake-project-409321&region=europe-west9\ngcloud dataproc jobs wait \'c0124ac0-e95f-437c-83a1-c4f5366eb637\' --region \'europe-west9\' --project \'data-lake-project-409321\'\nhttps://console.cloud.google.com/storage/browser/dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/\ngs://dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/driveroutput.*"
+  state_start_time {
+    seconds: 1706638865
+    nanos: 951955000
+  }
+}
+status_history {
+  state: PENDING
+  state_start_time {
+    seconds: 1706638826
+    nanos: 595102000
+  }
+}
+status_history {
+  state: SETUP_DONE
+  state_start_time {
+    seconds: 1706638826
+    nanos: 644338000
+  }
+}
+status_history {
+  state: RUNNING
+  state_start_time {
+    seconds: 1706638826
+    nanos: 951370000
+  }
+}
+yarn_applications {
+  name: "RawToFormatted"
+  state: FINISHED
+  progress: 1
+  tracking_url: "http://cluster-f499-m.europe-west9-c.c.data-lake-project-409321.internal.:8088/proxy/application_1706622505355_0100/"
+}
+driver_output_resource_uri: "gs://dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/driveroutput"
+driver_control_files_uri: "gs://dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/"
+job_uuid: "c0124ac0-e95f-437c-83a1-c4f5366eb637"
+done: true
+
+[2024-01-30T18:21:06.947+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=manage_data_lake_dag, task_id=dataproc_job_raw_to_formatted, execution_date=20240110T000000, start_date=20240130T182026, end_date=20240130T182106
+[2024-01-30T18:21:06.958+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 353 for task dataproc_job_raw_to_formatted (Job failed:
+reference {
+  project_id: "data-lake-project-409321"
+  job_id: "c0124ac0-e95f-437c-83a1-c4f5366eb637"
+}
+placement {
+  cluster_name: "cluster-f499"
+  cluster_uuid: "13fc8c1e-24fd-4462-8a44-4c3a49636ea2"
+}
+spark_job {
+  main_class: "RawToFormatted"
+  args: "gs://data-lake-buck"
+  args: "dataproc"
+  jar_file_uris: "gs://data-lake-buck/spark_job_2.12-0.1.0.jar"
+  properties {
+    key: "spark.airflow.execution_date"
+    value: "2024-01-10"
+  }
+}
+status {
+  state: ERROR
+  details: "Job failed with message [io.netty.channel.StacklessClosedChannelException: null]. Additional details can be found at:\nhttps://console.cloud.google.com/dataproc/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637?project=data-lake-project-409321&region=europe-west9\ngcloud dataproc jobs wait \'c0124ac0-e95f-437c-83a1-c4f5366eb637\' --region \'europe-west9\' --project \'data-lake-project-409321\'\nhttps://console.cloud.google.com/storage/browser/dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/\ngs://dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/driveroutput.*"
+  state_start_time {
+    seconds: 1706638865
+    nanos: 951955000
+  }
+}
+status_history {
+  state: PENDING
+  state_start_time {
+    seconds: 1706638826
+    nanos: 595102000
+  }
+}
+status_history {
+  state: SETUP_DONE
+  state_start_time {
+    seconds: 1706638826
+    nanos: 644338000
+  }
+}
+status_history {
+  state: RUNNING
+  state_start_time {
+    seconds: 1706638826
+    nanos: 951370000
+  }
+}
+yarn_applications {
+  name: "RawToFormatted"
+  state: FINISHED
+  progress: 1
+  tracking_url: "http://cluster-f499-m.europe-west9-c.c.data-lake-project-409321.internal.:8088/proxy/application_1706622505355_0100/"
+}
+driver_output_resource_uri: "gs://dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/driveroutput"
+driver_control_files_uri: "gs://dataproc-staging-europe-west9-58760042001-uborul6i/google-cloud-dataproc-metainfo/13fc8c1e-24fd-4462-8a44-4c3a49636ea2/jobs/c0124ac0-e95f-437c-83a1-c4f5366eb637/"
+job_uuid: "c0124ac0-e95f-437c-83a1-c4f5366eb637"
+done: true
+; 73470)
+[2024-01-30T18:21:06.976+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-01-30T18:21:06.995+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
